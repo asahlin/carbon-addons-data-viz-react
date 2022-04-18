@@ -46,11 +46,11 @@ class DataTooltip extends Component {
         },
         {
           'bx--data-tooltip__multiple--right':
-            item.color && (data.length > 3 && i >= data.length / 2),
+            item.color && data.length > 3 && i >= data.length / 2,
         },
         {
           'bx--data-tooltip__multiple--left':
-            item.color && (data.length > 3 && i < data.length / 2),
+            item.color && data.length > 3 && i < data.length / 2,
         }
       );
 

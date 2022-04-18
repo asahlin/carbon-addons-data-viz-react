@@ -257,8 +257,8 @@ class BarGraph extends Component {
 
       barContainer
         .selectAll('rect')
-        .on('mouseover', (d, i) => this.onMouseEnter(d, i))
-        .on('mouseout', (d, i) => this.onMouseOut(d, i));
+        .on('mouseover', (event, d, i) => this.onMouseEnter(d, i))
+        .on('mouseout', (event, d, i) => this.onMouseOut(d, i));
     }
   }
 

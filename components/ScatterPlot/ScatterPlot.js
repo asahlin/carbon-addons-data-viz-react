@@ -15,7 +15,10 @@ const propTypes = {
 };
 
 const defaultProps = {
-  data: [[100, 10], [50, 20]],
+  data: [
+    [100, 10],
+    [50, 20],
+  ],
   height: 300,
   width: 800,
   margin: {
@@ -180,8 +183,8 @@ class ScatterPlot extends Component {
       .attr('class', 'overlay')
       .style('fill', 'none')
       .style('pointer-events', 'all')
-      .on('mousemove', () => {
-        this.onMouseMove(data);
+      .on('mousemove', event => {
+        this.onMouseMove(event, data);
       });
   }
 
@@ -191,7 +194,7 @@ class ScatterPlot extends Component {
       return d[1];
     }).right;
 
-    const mouse = d3.mouse(this.refs.container)[0] - margin.left;
+    const mouse = d3.pointer(event, this.refs.container)[0] - margin.left;
     const timestamp = this.x.invert(mouse);
     const index = bisectDate(data, timestamp);
     const d0 = data[index - 1];

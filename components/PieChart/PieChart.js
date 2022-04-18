@@ -72,7 +72,7 @@ class PieChart extends Component {
       .attr('d', path);
 
     arcs
-      .on('mouseover', function(d) {
+      .on('mouseover', function(event, d) {
         d3.select(this)
           .transition()
           .style('cursor', 'pointer')

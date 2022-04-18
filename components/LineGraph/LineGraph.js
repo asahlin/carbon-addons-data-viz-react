@@ -482,8 +482,8 @@ class LineGraph extends Component {
       .attr('class', 'overlay')
       .style('fill', 'none')
       .style('pointer-events', 'all')
-      .on('mousemove', () => {
-        this.onMouseMove();
+      .on('mousemove', event => {
+        this.onMouseMove(event);
       })
       .on('mouseout', () => {
         this.onMouseOut();
@@ -535,7 +535,7 @@ class LineGraph extends Component {
     }
   }
 
-  onMouseMove() {
+  onMouseMove(event) {
     if (!this.id) return null;
 
     const {
@@ -555,7 +555,7 @@ class LineGraph extends Component {
       const bisectDate = d3.bisector(function(d) {
         return d[d.length - 1];
       }).right;
-      const mouse = d3.mouse(this.id)[0] - margin.left;
+      const mouse = d3.pointer(event, this.id)[0] - margin.left;
       const timestamp = this.x.invert(mouse);
       let d, mouseData, tooltipHeading, tooltipData;
       if (data.length > 0) {
@@ -571,8 +571,8 @@ class LineGraph extends Component {
 
           mouseData = {
             data: d,
-            pageX: d3.event.pageX,
-            pageY: d3.event.pageY,
+            pageX: event.pageX,
+            pageY: event.pageY,
             graphX: this.x(d[d.length - 1]),
             graphY: this.y(d[0]),
             graphYArray: d.slice(0, -1).map(this.y),
@@ -593,7 +593,7 @@ class LineGraph extends Component {
         }
       } else {
         const mouseX = this.x(timestamp);
-        const mouseY = d3.mouse(this.id)[1] - margin.top;
+        const mouseY = d3.pointer(event, this.id)[1] - margin.top;
         const distances = [];
         d = _.sortBy(_.flatten(datasets), a => {
           const aDist =
@@ -606,8 +606,8 @@ class LineGraph extends Component {
 
         mouseData = {
           data: d,
-          pageX: d3.event.pageX,
-          pageY: d3.event.pageY,
+          pageX: event.pageX,
+          pageY: event.pageY,
           graphX: this.x(d[d.length - 1]),
           graphY: this.y(d[0]),
           graphYArray: d.slice(0, -1).map(this.y),

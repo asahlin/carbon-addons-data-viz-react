@@ -1,6 +1,6 @@
 {
   "name": "carbon-addons-data-viz-react",
-  "version": "1.26.0",
+  "version": "1.27.0",
   "description": "Carbon Data Visualization",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -12,7 +12,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "classnames": "^2.2.5",
-    "d3": "^4.10.2",
+    "d3": "6.0.0",
     "lodash": "^4.17.5"
   },
   "devDependencies": {
@@ -49,10 +49,10 @@
     "style-loader": "^0.18.2"
   },
   "peerDependencies": {
-    "carbon-components": "^8.0.0",
-    "carbon-components-react": "^5.19.2",
-    "react": "^15.3.2 || ^16.1.0",
-    "react-dom": "^15.3.2 || ^16.1.0"
+    "carbon-components": "^8.0.0 || ^10.52.0",
+    "carbon-components-react": "^5.19.2 || ^7.52.0",
+    "react": "^15.3.2 || ^17.0.2",
+    "react-dom": "^15.3.2 || ^17.0.2"
   },
   "scripts": {
     "prepublish": "npm run build",
